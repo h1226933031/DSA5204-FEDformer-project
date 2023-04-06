@@ -15,7 +15,7 @@ def get_frequency_modes(seq_len, modes=64, mode_select_method='random'):
     """
     modes = min(modes, seq_len // 2)
     if mode_select_method == 'random':
-        index = list(range(0, seq_len // 2))
+        index = list(range(0, modes))  # list(range(0, seq_len // 2))
         np.random.shuffle(index)
         index = index[:modes]
     else:

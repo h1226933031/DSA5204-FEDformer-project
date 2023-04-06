@@ -10,7 +10,7 @@ import sympy
 
 
 def main():
-    fix_seed = 2021
+    fix_seed = 666
     random.seed(fix_seed)
     torch.manual_seed(fix_seed)
     np.random.seed(fix_seed)
@@ -27,7 +27,7 @@ def main():
                         help='for FEDformer, there are two versions to choose, options: [Fourier, Wavelets]')
     parser.add_argument('--mode_select', type=str, default='random',
                         help='for FEDformer, there are two mode selection method, options: [random, low]')
-    parser.add_argument('--modes', type=int, default=64, help='modes to be selected random 64')
+    parser.add_argument('--modes', type=int, default=16, help='modes to be selected random 64')
     parser.add_argument('--L', type=int, default=3, help='ignore level')
     parser.add_argument('--base', type=str, default='legendre', help='mwt base')
     parser.add_argument('--cross_activation', type=str, default='tanh',
@@ -47,7 +47,7 @@ def main():
     parser.add_argument('--checkpoints', type=str, default='./checkpoints/', help='location of model checkpoints')
 
     # forecasting task
-    parser.add_argument('--seq_len', type=int, default=36, help='input sequence length')
+    parser.add_argument('--seq_len', type=int, default=96, help='input sequence length')
     parser.add_argument('--label_len', type=int, default=18, help='start token length')
     parser.add_argument('--pred_len', type=int, default=24, help='prediction sequence length')
     # parser.add_argument('--cross_activation', type=str, default='tanh'
@@ -75,7 +75,7 @@ def main():
 
     # optimization
     parser.add_argument('--num_workers', type=int, default=10, help='data loader num workers')
-    parser.add_argument('--itr', type=int, default=3, help='experiments times')
+    parser.add_argument('--itr', type=int, default=1, help='experiments times')
     parser.add_argument('--train_epochs', type=int, default=1, help='train epochs')
     parser.add_argument('--batch_size', type=int, default=32, help='batch size of train input data')
     parser.add_argument('--patience', type=int, default=3, help='early stopping patience')
