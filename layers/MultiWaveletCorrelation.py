@@ -3,11 +3,12 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 from torch import Tensor
-
+from sympy import Poly, legendre, Symbol, chebyshevt
 from typing import List, Tuple
 import math
-
+from layers.utils import get_phi_psi, legendreDer
 from torch import nn
+from scipy.special import eval_legendre
 
 
 def get_filter(base, k):

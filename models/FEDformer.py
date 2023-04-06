@@ -5,8 +5,6 @@ from layers.Embedding import DataEmbedding_wo_pos
 from layers.FourierCorrelation import FourierBlock, FourierCrossAttention
 from layers.MultiWaveletCorrelation import MultiWaveletCross, MultiWaveletTransform
 from layers.EncDec import Encoder, Decoder, EncoderLayer, DecoderLayer, my_Layernorm, AutoCorrelationLayer, series_decomp_multi
-import math
-import numpy as np
 
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -128,7 +126,6 @@ class Model(nn.Module):
         enc_out, attns = self.encoder(enc_out, attn_mask=enc_self_mask)
         # dec
         dec_out = self.dec_embedding(seasonal_init, x_mark_dec)
-        print('inout of self.decoder:', dec_out.shape, enc_out.shape)
         seasonal_part, trend_part = self.decoder(dec_out, enc_out, x_mask=dec_self_mask, cross_mask=dec_enc_mask,
                                                  trend=trend_init)
         # final
