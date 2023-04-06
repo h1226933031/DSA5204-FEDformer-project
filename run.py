@@ -19,7 +19,7 @@ def main():
     # basic config
     parser.add_argument('--is_training', type=int, default=1, help='status')
     parser.add_argument('--task_id', type=str, default='test', help='task id')
-    parser.add_argument('--model', type=str, default='FEDformer',
+    parser.add_argument('--model', type=str, default='Autoformer',
                         help='model name, options: [FEDformer, Transformer, Autoformer]')
 
     # supplementary config for FEDformer model
