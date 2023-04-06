@@ -1,0 +1,4 @@
+2023-04-06 12:08:19,381 - Use GPU:
+2023-04-06 12:08:21,362 - >>>>>>>start training : test_FEDformer_random_modes64_custom_ftM_sl36_ll18_pl24_dm256_nh8_el2_dl1_df2048_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+2023-04-06 12:08:21,377 - train: 1256 samples
+2023-04-06 12:08:21,385 - val: 124 samples

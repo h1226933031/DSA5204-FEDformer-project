@@ -4,8 +4,10 @@ from exp import Exp_Main
 import random
 import numpy as np
 import logging
+import sympy
 
 ''' data, model, embed'''
+
 
 def main():
     fix_seed = 2021
@@ -21,7 +23,7 @@ def main():
                         help='model name, options: [FEDformer, Transformer, Autoformer]')
 
     # supplementary config for FEDformer model
-    parser.add_argument('--version', type=str, default='Fourier',
+    parser.add_argument('--version', type=str, default='Wavelets',
                         help='for FEDformer, there are two versions to choose, options: [Fourier, Wavelets]')
     parser.add_argument('--mode_select', type=str, default='random',
                         help='for FEDformer, there are two mode selection method, options: [random, low]')
@@ -33,8 +35,8 @@ def main():
 
     # data loader
     parser.add_argument('--data', type=str, default='custom', help='oil_price type')
-    parser.add_argument('--root_path', type=str, default='./data/sales_forcasting/train_54_str/', help='root path of the data file')
-    parser.add_argument('--data_path', type=str, default='train_1.csv', help='data file')
+    parser.add_argument('--root_path', type=str, default='./data/daily_climate/', help='root path of the data file')
+    parser.add_argument('--data_path', type=str, default='DailyDelhiClimateTrain.csv', help='data file')
     parser.add_argument('--features', type=str, default='M',
                         help='forecasting task, options:[M, S, MS]; M:multivariate predict multivariate, '
                              'S:univariate predict univariate, MS:multivariate predict univariate')
@@ -51,15 +53,15 @@ def main():
     # parser.add_argument('--cross_activation', type=str, default='tanh'
 
     # model define
-    parser.add_argument('--enc_in', type=int, default=34, help='encoder input size')
-    parser.add_argument('--dec_in', type=int, default=34, help='decoder input size')
-    parser.add_argument('--c_out', type=int, default=34, help='output size')
+    parser.add_argument('--enc_in', type=int, default=4, help='encoder input size')
+    parser.add_argument('--dec_in', type=int, default=4, help='decoder input size')
+    parser.add_argument('--c_out', type=int, default=4, help='output size')
     parser.add_argument('--d_model', type=int, default=256, help='dimension of model')
     parser.add_argument('--n_heads', type=int, default=8, help='num of heads')
     parser.add_argument('--e_layers', type=int, default=2, help='num of encoder layers')
     parser.add_argument('--d_layers', type=int, default=1, help='num of decoder layers')
     parser.add_argument('--d_ff', type=int, default=2048, help='dimension of fcn')
-    parser.add_argument('--moving_avg', type = str, default="24", help='window size of moving average')
+    parser.add_argument('--moving_avg', type=str, default="24", help='window size of moving average')
     parser.add_argument('--factor', type=int, default=3, help='attn factor')
     parser.add_argument('--distil', action='store_false',
                         help='whether to use distilling in encoder, using this argument means not using distilling',
@@ -145,4 +147,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print(sympy.__version__)
     main()
