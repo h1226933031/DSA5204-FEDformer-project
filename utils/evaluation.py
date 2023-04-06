@@ -16,13 +16,13 @@ def metric(pred, true):
     return mae, mse
 
 
-def visual(true, preds=None, name='./pic/test.pdf'):
+def visual(true, preds=None, true_label='GroundTruth', preds_label='Prediction', name='./pic/test.pdf'):
     """
     Results visualization
     """
     plt.figure()
-    plt.plot(true, label='GroundTruth', linewidth=2)
+    plt.plot(true, label=true_label, linewidth=2)
     if preds is not None:
-        plt.plot(preds, label='Prediction', linewidth=2)
+        plt.plot(preds, label=preds_label, linewidth=2)
     plt.legend()
     plt.savefig(name, bbox_inches='tight')
